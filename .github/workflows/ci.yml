@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    paths:
+      - 'VideoGameCi/Assets/**'
+      - 'VideoGameCi/Packages/**'
+      - 'VideoGameCi/ProjectSettings/**'
+
+jobs:
+  buildForLinux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: game-ci/unity-builder@v2
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          targetPlatform: StandaloneLinux64
+          projectPath: VideoGameCi
+          unityVersion: 2021.3.11f1
+          buildName: VideoGameCi
+      - uses: actions/upload-artifact@v3
+        with:
+          name: StandaloneLinux64
+          path: build/StandaloneLinux64
