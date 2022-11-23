@@ -1,0 +1,12 @@
+{
+  "name": "presentations",
+  "scripts": {
+    "preparations": "marp --watch --preview preparations"
+  },
+  "keywords": [],
+  "author": "Manuel Rauber <manuel.rauber@boundfoxstudios.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@marp-team/marp-cli": "~2.1.2"
+  }
+}
